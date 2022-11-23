@@ -1,0 +1,41 @@
+{
+  "name": "api_fca_book2",
+  "version": "1.0.0",
+  "description": "API advanced book",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "CFP, DGC",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipeportela/fca_webbook2.git"
+  },
+  "keywords": [
+    "web",
+    "api",
+    "mongo",
+    "mongoose",
+    "rest"
+  ],
+  "bugs": {
+    "url": "https://github.com/filipeportela/fca_webbook2/issues"
+  },
+  "homepage": "https://github.com/filipeportela/fca_webbook2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
+    "express-validator": "^6.2.0",
+    "fs": "0.0.1-security",
+    "handlebars": "^4.5.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "nodemailer": "^6.3.1"
+  }
+}
