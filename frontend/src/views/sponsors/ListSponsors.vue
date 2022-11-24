@@ -47,14 +47,7 @@
                     class="btn btn-outline-success mr-2 mt-2"
                   >
                     <i class="fas fa-edit"></i> EDITAR
-                  </router-link>
-                  <button
-                    @click="viewSponsor(sponsor._id)"
-                    type="button"
-                    class="btn btn-outline-success mr-2 mt-2"
-                  >
-                    <i class="fas fa-search"></i> VER
-                  </button>
+                  </router-link>                  
                   <button
                     @click="removeSponsor(sponsor._id)"
                     type="button"

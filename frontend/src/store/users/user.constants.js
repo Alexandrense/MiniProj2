@@ -16,6 +16,7 @@ export const FETCH_USERS = "fetchUsers";
 export const ADD_USER = "addUser";
 export const EDIT_USER = "editUser";
 export const REMOVE_USER = "removeUser";
+export const SET_USERS = "setUsers";
 
 // COMMON
 export const SET_MESSAGE = "setMessage";
