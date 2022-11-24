@@ -2,7 +2,7 @@
   <!-- Portfolio Section -->
   <section class="page-section">
     <b-container>
-      <HeaderPage title="Adicionar Especialista" />
+      <HeaderPage title="Adicionar Sponsor" />
 
       <!--FORM-->
       <b-row>
@@ -33,7 +33,7 @@
               <textarea
                 id="txtDescription"
                 class="form-control form-control-lg"
-                placeholder="escreve descrição do especialista"
+                placeholder="Descricao do especialista"
                 cols="30"
                 rows="10"
                 v-model="description"
@@ -57,13 +57,13 @@
 </template>
 
 <script>
-import { ADD_ANIMAL } from "@/store/animals/animal.constants";
+import { ADD_EXPERT } from "@/store/experts/expert.constants";
 import HeaderPage from "@/components/HeaderPage.vue";
 import router from "@/router";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "AddAnimal",
+  name: "AddExpert",
   components: {
     HeaderPage
   },
@@ -71,26 +71,19 @@ export default {
     return {
       name: "",
       group: "",
-      description: "",
-      level: "",
-      links: [
-        { types: "photo", url: "" },
-        { types: "video", url: "" },
-        { types: "sound", url: "" }
-      ],
-      evaluation: [],
-      comments: []
+      description: ""
     };
   },
   computed: {
-    ...mapGetters("animal", ["getMessage"])
+    ...mapGetters("expert", ["getExperts", "getMessage"])
   },
-  methods: {
+  methods: {    
+    
     add() {
-      this.$store.dispatch(`animal/${ADD_ANIMAL}`, this.$data).then(
+      this.$store.dispatch(`expert/${ADD_EXPERT}`, this.$data).then(
         () => {
-          this.$alert(this.getMessage, "Animal adicionado!", "success");
-          router.push({ name: "listAnimals" });
+          this.$alert(this.getMessage, "Especialista adicionado!", "success");
+          router.push({ name: "listExperts" });
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");
@@ -99,4 +92,5 @@ export default {
     }
   }
 };
+
 </script>
