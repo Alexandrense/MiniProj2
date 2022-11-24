@@ -9,5 +9,5 @@ module.exports = (app) => {
     app.use('/users', require('../routes/user.routes'));
     app.use('/emails', require('../routes/email.routes'));
     app.use('/sponsors', require('../routes/sponsor.routes'));
-    
+    app.use('/experts', require('../routes/expert.routes'));
 }
