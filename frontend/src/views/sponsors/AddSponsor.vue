@@ -20,12 +20,20 @@
               />
             </div>
             <div class="form-group">
-              <select id="sltGroup" class="form-control form-control-lg" v-model="group" required>
+              fdsfsdfds
+              <table border="1"><tr v-for="sponsorItem of sponsors" :key="sponsorItem._id">
+                <td class="pt-4">nome: {{sponsorItem.name}}</td>         
+                </tr>
+              </table>
+
+              <select id="sltGroup" class="form-control form-control-lg" v-model="animal" required>
                 <option value>-- SELECIONA GRUPO --</option>
-                <option value="anfibio">sapo</option>
-                <option value="ave">coleho</option>
-                <option value="mamifero">cavalo</option>
-                <option value="peixe">cobra</option>
+                <option value="cao">CAO</option>
+                <options v-for="sponsorItem of sponsors" :key="sponsorItem._id">
+               
+                <option :value="sponsorItem.animal">{{sponsorItem.animal}}</option>
+                
+                </options>
               </select>
             </div>
             <div class="form-group">
@@ -56,40 +64,43 @@
 </template>
 
 <script>
-import { ADD_ANIMAL } from "@/store/animals/animal.constants";
+import { FETCH_SPONSORS, ADD_SPONSOR } from "@/store/sponsors/sponsor.constants";
 import HeaderPage from "@/components/HeaderPage.vue";
 import router from "@/router";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "AddAnimal",
+  name: "AddSponsor",
   components: {
     HeaderPage
   },
   data: () => {
     return {
       name: "",
-      group: "",
-      description: "",
-      level: "",
-      links: [
-        { types: "photo", url: "" },
-        { types: "video", url: "" },
-        { types: "sound", url: "" }
-      ],
-      evaluation: [],
-      comments: []
+      animal: "",
+      message: "",
+      sponsors: []
     };
   },
   computed: {
-    ...mapGetters("animal", ["getMessage"])
+    ...mapGetters("sponsor", ["getSponsors", "getMessage"])
   },
   methods: {
-    add() {
-      this.$store.dispatch(`animal/${ADD_ANIMAL}`, this.$data).then(
+    fetchSponsors() {
+      this.$store.dispatch(`sponsor/${FETCH_SPONSORS}`).then(
         () => {
-          this.$alert(this.getMessage, "Animal adicionado!", "success");
-          router.push({ name: "listAnimals" });
+          this.sponsors = this.getSponsors;          
+        },
+        err => {
+          this.$alert(`${err.message}`, "Erro", "error");
+        }
+      );
+    },
+    add() {
+      this.$store.dispatch(`sponsor/${ADD_SPONSOR}`, this.$data).then(
+        () => {
+          this.$alert(this.getMessage, "Sponsor adicionado!", "success");
+          router.push({ name: "listSponsors" });
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");

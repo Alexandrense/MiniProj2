@@ -37,26 +37,26 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="animal of animals" :key="animal._id">
-                <td class="pt-4">Pedro <!--{{animal.name}}--></td>             
-                <td class="pt-4">Sapo<!--{{animal.level}}--></td>
+              <tr v-for="sponsor of sponsors" :key="sponsor._id">
+                <td class="pt-4">{{sponsor.name}}</td>             
+                <td class="pt-4">{{sponsor.animal}}</td>
                 <td>
                   <router-link
-                    :to="{name:'editAnimal', params:{animalId: animal._id}}"
+                    :to="{name:'editSponsor', params:{sponsorId: sponsor._id}}"
                     tag="button"
                     class="btn btn-outline-success mr-2 mt-2"
                   >
                     <i class="fas fa-edit"></i> EDITAR
                   </router-link>
                   <button
-                    @click="viewAnimal(animal._id)"
+                    @click="viewSponsor(sponsor._id)"
                     type="button"
                     class="btn btn-outline-success mr-2 mt-2"
                   >
                     <i class="fas fa-search"></i> VER
                   </button>
                   <button
-                    @click="removeAnimal(animal._id)"
+                    @click="removeSponsor(sponsor._id)"
                     type="button"
                     class="btn btn-outline-danger mr-2 mt-2"
                   >
@@ -74,29 +74,29 @@
 </template>
 
 <script>
-import { FETCH_ANIMALS, REMOVE_ANIMAL } from "@/store/animals/animal.constants";
+import { FETCH_SPONSORS, REMOVE_SPONSOR } from "@/store/sponsors/sponsor.constants";
 import HeaderPage from "@/components/HeaderPage.vue";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "ManageAnimals",
+  name: "ManageSponsors",
   components: {
     HeaderPage
   },
   data: function() {
     return {
-      animals: [],
+      sponsors: [],
       sortType: 1
     };
   },
   computed: {
-    ...mapGetters("animal", ["getAnimals", "getMessage"])
+    ...mapGetters("sponsor", ["getSponsors", "getMessage"])
   },
   methods: {
-    fetchAnimals() {
-      this.$store.dispatch(`animal/${FETCH_ANIMALS}`).then(
+    fetchSponsors() {
+      this.$store.dispatch(`sponsor/${FETCH_SPONSORS}`).then(
         () => {
-          this.animals = this.getAnimals;
+          this.sponsors = this.getSponsors;
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");
@@ -104,7 +104,7 @@ export default {
       );
     },
     sort() {
-      this.animals.sort(this.compareNames);
+      this.sponsors.sort(this.compareNames);
       this.sortType *= -1;
     },
     compareNames(u1, u2) {
@@ -113,43 +113,42 @@ export default {
       else return 0;
     },
 
-    viewAnimal(id) {
-      const animal = this.animals.find(animal => animal._id === id);
+    viewSponsor(id) {
+      const sponsor = this.sponsors.find(sponsor => sponsor._id === id);
 
       this.$fire({
-        title: animal.name,
-        html: this.generateTemplate(animal),
-        imageUrl: animal.links[0].url,
+        title: sponsor.name,
+        html: this.generateTemplate(sponsor),
+        imageUrl: sponsor.links[0].url,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: "Imagem desconhecida"
       });
     },
 
-    generateTemplate(animal) {
+    generateTemplate(sponsor) {
       let response = `
-          <h4>Grupo:</b> ${animal.group}</h4>
-          <h5>(nível:</b> ${animal.level})</h5>
-          <p>${animal.description}</p> 
+          <h4>Animal:</b> ${sponsor.animal}</h4>        
+          <p>${sponsor.message}</p> 
           <p>Elementos multimédia:
         `;
-      for (const link of animal.links) {
+      for (const link of sponsor.links) {
         response += ` <a href='${link.url}' target='_blank'>${link.types}</a>`;
       }
-      response += `</p><p>Comentários: ${animal.comments.length} Avaliações: ${animal.evaluation.length}</p> `;
+      response += `</p><p>Comentários: ${sponsor.comments.length} Avaliações: ${sponsor.evaluation.length}</p> `;
       return response;
     },
-    removeAnimal(id) {
+    removeSponsor(id) {
       this.$confirm(
         "Se sim, clique em OK",
-        "Deseja mesmo remover o animal?",
+        "Deseja mesmo remover o sponsor?",
         "warning",
         { confirmButtonText: "OK", cancelButtonText: "Cancelar" }
       ).then(
         () => {
-          this.$store.dispatch(`animal/${REMOVE_ANIMAL}`, id).then(() => {
-            this.$alert(this.getMessage, "Animal removido!", "success");
-            this.fetchAnimals();
+          this.$store.dispatch(`sponsor/${REMOVE_SPONSOR}`, id).then(() => {
+            this.$alert(this.getMessage, "Sponsor removido!", "success");
+            this.fetchSponsors();
           });
         },
         () => {
@@ -159,7 +158,7 @@ export default {
     }
   },
   created() {
-    this.fetchAnimals();
+    this.fetchSponsors();
   }
 };
 </script>
