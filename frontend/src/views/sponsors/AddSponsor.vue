@@ -20,20 +20,17 @@
               />
             </div>
             <div class="form-group">
-              fdsfsdfds
-              <table border="1"><tr v-for="sponsorItem of sponsors" :key="sponsorItem._id">
-                <td class="pt-4">nome: {{sponsorItem.name}}</td>         
-                </tr>
-              </table>
+
+              <select class="form-control form-control-lg">
+                <option v-for="option in sponsors" :key="option._id">
+                  {{ option.animal }}
+                </option>
+              </select>
 
               <select id="sltGroup" class="form-control form-control-lg" v-model="animal" required>
                 <option value>-- SELECIONA GRUPO --</option>
                 <option value="cao">CAO</option>
-                <options v-for="sponsorItem of sponsors" :key="sponsorItem._id">
-               
-                <option :value="sponsorItem.animal">{{sponsorItem.animal}}</option>
                 
-                </options>
               </select>
             </div>
             <div class="form-group">
@@ -89,7 +86,7 @@ export default {
     fetchSponsors() {
       this.$store.dispatch(`sponsor/${FETCH_SPONSORS}`).then(
         () => {
-          this.sponsors = this.getSponsors;          
+          this.sponsors = this.getSponsors;
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");
@@ -109,4 +106,5 @@ export default {
     }
   }
 };
+
 </script>
