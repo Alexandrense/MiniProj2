@@ -10,7 +10,7 @@
           <form @submit.prevent="update">
             <div class="form-group">
               <input
-                v-model="sponsor.name"
+                v-model="expert.name"
                 type="text"
                 class="form-control form-control-lg"
                 id="txtName"
@@ -19,20 +19,23 @@
               />
             </div>
             <div class="form-group">
-              <select id="sltGroup" class="form-control form-control-lg" v-model="sponsor.animal">
-                <option v-for="option in animals" :key="option._id">
-                  {{ option.name }}
-                </option>
+              <select id="sltGroup" class="form-control form-control-lg" v-model="expert.group">                
+                <option value>-- SELECIONA GRUPO --</option>
+                <option value="anfibio">ANFÍBIO</option>
+                <option value="ave">AVE</option>
+                <option value="mamifero">MAMÍFERO</option>
+                <option value="peixe">PEIXE</option>
+                <option value="reptil">RÉPTIL</option>
               </select>
             </div>
             <div class="form-group">
               <textarea
                 id="txtDescription"
                 class="form-control form-control-lg"
-                placeholder="escreve mensagem do sponsor"
+                placeholder="Descrição do especialista"
                 cols="30"
                 rows="10"
-                v-model="sponsor.message"
+                v-model="expert.description"
                 required
               ></textarea>
             </div>
@@ -41,7 +44,7 @@
               <i class="fas fa-edit"></i> ATUALIZAR
             </button>
             <router-link
-              :to="{name: 'listSponsors'}"
+              :to="{name: 'listExperts'}"
               tag="button"
               class="btn btn-outline-danger btn-lg"
             >
@@ -56,54 +59,40 @@
 </template>
 
 <script>
-import { EDIT_SPONSOR } from "@/store/sponsors/sponsor.constants";
-import { FETCH_ANIMALS } from "@/store/animals/animal.constants";
+import { EDIT_EXPERT } from "@/store/experts/expert.constants";
+
 import HeaderPage from "@/components/HeaderPage.vue";
 import router from "@/router";
 import { mapGetters } from "vuex";
 
 export default {
-  name: "EditSponsor",
+  name: "EditExpert",
   components: {
     HeaderPage
   },
   data: () => {
     return {
-      sponsor: {},
-      animals: [],
-      sortType: 1
+      expert: {}
     };
   },
   computed: {
-    ...mapGetters("sponsor", ["getSponsorsById", "getMessage"]),
-    ...mapGetters("animal", ["getAnimals"])
+    ...mapGetters("expert", ["getExpertsById", "getMessage"]),
   },
   methods: {
     removeComments() {
       this.sponsor.comments.length = 0
       this.$alert("Comentários removidos, clique em atualizar!", "Comentários!", "success");
-    },
-    fetchAnimals() {
-      this.$store.dispatch(`animal/${FETCH_ANIMALS}`).then(
-        () => {
-          this.animals = this.getAnimals;
-          this.animals.sort(this.compareNames);
-        },
-        err => {
-          this.$alert(`${err.message}`, "Erro", "error");
-        }
-      );
-    },
+    },    
     compareNames(u1, u2) {
       if (u1.name > u2.name) return 1 * this.sortType;
       else if (u1.name < u2.name) return -1 * this.sortType;
       else return 0;
     },
     update() {
-      this.$store.dispatch(`sponsor/${EDIT_SPONSOR}`, this.$data.sponsor).then(
+      this.$store.dispatch(`expert/${EDIT_EXPERT}`, this.$data.expert).then(
         () => {
-          this.$alert(this.getMessage, "Sponsor atualizado!", "success");
-          router.push({ name: "listSponsors" });
+          this.$alert(this.getMessage, "Especialista atualizado!", "success");
+          router.push({ name: "listExperts" });
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");
@@ -112,8 +101,7 @@ export default {
     }
   },
   created() {
-    this.sponsor = this.getSponsorsById(this.$route.params.sponsorId);
-    this.fetchAnimals();
+    this.expert = this.getExpertsById(this.$route.params.expertId);
   }
 };
 </script>
