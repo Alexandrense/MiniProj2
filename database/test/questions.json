@@ -1,0 +1,96 @@
+{
+    "_id" : ObjectId("637043ee3e6bdb0004bbdbb9"),
+    "level" : NumberInt(1),
+    "active" : true,
+    "question" : "questao 1",
+    "group" : "",
+    "type" : "Escolha múltipla",
+    "description" : "safdsafadsf",
+    "title" : "",
+    "answers" : [
+        {
+            "_id" : ObjectId("637043ee3e6bdb0004bbdbbc"),
+            "title" : "r1",
+            "description" : "",
+            "correct" : true
+        },
+        {
+            "_id" : ObjectId("637043ee3e6bdb0004bbdbbb"),
+            "title" : "r2",
+            "description" : "",
+            "correct" : false
+        },
+        {
+            "_id" : ObjectId("637043ee3e6bdb0004bbdbba"),
+            "title" : "r3",
+            "description" : "",
+            "correct" : false
+        }
+    ],
+    "date" : ISODate("2022-11-13T01:10:06.054+0000"),
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("6374270a5d57d85748766af2"),
+    "level" : NumberInt(1),
+    "active" : true,
+    "question" : "Capital de Angola",
+    "group" : "",
+    "type" : "Escolha múltipla",
+    "description" : "Quizz Conheço Angola",
+    "title" : "",
+    "answers" : [
+        {
+            "_id" : ObjectId("6374270a5d57d85748766af5"),
+            "title" : "Luanda",
+            "description" : "",
+            "correct" : true
+        },
+        {
+            "_id" : ObjectId("6374270a5d57d85748766af4"),
+            "title" : "Cabinda",
+            "description" : "",
+            "correct" : false
+        },
+        {
+            "_id" : ObjectId("6374270a5d57d85748766af3"),
+            "title" : "Zaire",
+            "description" : "",
+            "correct" : false
+        }
+    ],
+    "date" : ISODate("2022-11-15T23:55:54.338+0000"),
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("637427725d57d85748766af6"),
+    "level" : NumberInt(1),
+    "active" : true,
+    "question" : "Qual município não pertece à Luanda?",
+    "group" : "",
+    "type" : "Escolha múltipla",
+    "description" : "Conheço Angola",
+    "title" : "",
+    "answers" : [
+        {
+            "_id" : ObjectId("637427725d57d85748766af9"),
+            "title" : "Cacuaco",
+            "description" : "",
+            "correct" : false
+        },
+        {
+            "_id" : ObjectId("637427725d57d85748766af8"),
+            "title" : "Viana",
+            "description" : "",
+            "correct" : false
+        },
+        {
+            "_id" : ObjectId("637427725d57d85748766af7"),
+            "title" : "Caxito",
+            "description" : "",
+            "correct" : true
+        }
+    ],
+    "date" : ISODate("2022-11-15T23:57:38.612+0000"),
+    "__v" : NumberInt(0)
+}

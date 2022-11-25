@@ -1,0 +1,34 @@
+{
+    "_id" : ObjectId("637f74ad10cd10522c5711b0"),
+    "name" : "Dr. Alexandre",
+    "group" : "anfibio",
+    "description" : "Os anfibios são os animais mais inteligentes. "
+}
+{
+    "_id" : ObjectId("637f8e5ca8356a166cbd56a5"),
+    "name" : "Dr. Joao Dias",
+    "group" : "peixe",
+    "description" : "Os peixes são animais vertebrados, aquáticos, tipicamente ectotérmicos, que possuem o corpo fusiforme, os membros transformados em barbatanas ou nadadeiras (ausentes em alguns grupos) sustentadas por raios ósseos ou cartilaginosos, guelras ou brânquias com que respiram o oxigénio dissolvido na água (embora os dipnóicos usem pulmões) e, na sua maior parte, o corpo coberto de escamas.",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("637f8ec6a8356a166cbd56a6"),
+    "name" : "Dra. Joana Maranhão",
+    "group" : "ave",
+    "description" : "Aves são uma classe de seres vivos vertebrados endotérmicos caracterizada pela presença de penas, um bico sem dentes, oviparidade de casca rígida, elevado metabolismo, um coração com quatro câmaras e um esqueleto pneumático resistente e leve.",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("638090951ce2ad7a02c0d190"),
+    "name" : "Dr. Patricia",
+    "group" : "mamifero",
+    "description" : "Os mamíferos (do latim: Mammalia) constituem uma Subclasse de animais vertebrados do domínio Eukaryota, do reino Animalia e filo Chordata, subdivididos em dois grupos: aquáticos (cetáceos, sirênios e pinípedes) e terrestres (quadrúpedes e bípedes), que se caracterizam pela presença de glândulas mamárias[1] que, nas fêmeas, produzem leite para a alimentação dos filhotes (ou crias), presença de pelos ou cabelos, com exceção dos golfinhos e de algumas baleias, que somente na fase embrionária possuem pelos.",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("63809aec1ce2ad7a02c0d191"),
+    "name" : "Dr. Sapatana",
+    "group" : "reptil",
+    "description" : "Os répteis latim científico Reptilia constituem uma classe de animais vertebrados tetrápodes e ectotérmicos ou seja não possuem temperatura corporal constante São todos amniotas animais cujos embriões são rodeados por uma membrana amniótica característica que lhes permitiu ficarem independentes da água para reprodução ao contrário dos anfíbios ",
+    "__v" : NumberInt(0)
+}

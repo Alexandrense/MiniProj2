@@ -1,0 +1,37 @@
+{
+    "_id" : ObjectId("621cde74bb2871c275930bdf"),
+    "message" : "All your data is backed up. You must pay 0.05 BTC to bc1qj3lzraxrdndcd6t5c4qvleuy9n6x56etrtnt6n in 48 hours to recover it.\nYour data will be restored once the money is received in the address above. Feel free to change your credentials.\n\nEmail to q7z4ps+fihsm7zg0gj02p@sharklasers.com if you have updated your credentials and still need the backup files\nor if you still need more information.\n",
+    "active" : true,
+    "date" : ISODate("2022-11-13T01:08:59.732+0000"),
+    "level" : NumberInt(1),
+    "name" : "aaaa",
+    "points" : NumberInt(2),
+    "questions" : [
+
+    ]
+}
+{
+    "_id" : ObjectId("6374278d5d57d85748766afa"),
+    "points" : NumberInt(2),
+    "level" : NumberInt(1),
+    "questions" : [
+        "6374270a5d57d85748766af2",
+        "637427725d57d85748766af6"
+    ],
+    "active" : true,
+    "name" : "Conheço Angola",
+    "date" : ISODate("2022-11-15T23:58:05.221+0000"),
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("637e672f24792f1b16e2967f"),
+    "points" : NumberInt(12),
+    "level" : NumberInt(1),
+    "questions" : [
+
+    ],
+    "active" : true,
+    "name" : "Teste",
+    "date" : ISODate("2022-11-23T18:32:15.629+0000"),
+    "__v" : NumberInt(0)
+}
