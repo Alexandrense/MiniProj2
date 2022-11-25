@@ -8,21 +8,26 @@ Tarefa 3.2: Miniprojeto - Desenvolvimento do front-end
 
 Alexandre Carvalho
 
-#Setup
+# Setup
 
 - Frontend:
 On /frontend run
+
 npm install
 
 - Backend:
 On backend/fca_webbook2-master run:
+
 npm install
 
 - Database:
 Import /database/test to a test collection in you MongoDB
 
-#Running
+# Running
 In /frontend run:
+
 vue ui
+
 With the UI import both frontend and backend projects.
+
 Build and run the projects. Run the backend first.
