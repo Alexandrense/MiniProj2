@@ -38,20 +38,26 @@
                   <b-card-text>
                     <b>Descrição:</b>
                     {{animal.description}}
-                  </b-card-text>
-                  <b-card-text>
-                    <b>Especialista:</b>
-                    Pedro
-                  </b-card-text>
-                  <b-card-text>
-                    <b>Mensagem do Especialista:</b>
-                    Sapo é uma designação genérica de anfíbios da ordem Anura predominantemente terrestres, com pele rugosa, e glândulas parotoides semelhantes a verrugas. É usado especialmente em relação a membros da família Bufonidae. 
+                  </b-card-text>                  
+                  
+                  <b-card-text>      
+                    <b>Descrição dos especialistas:</b>              
+                    <b-alert
+                      show
+                      variant="info"
+                      v-for="expert in this.experts"
+                      :key="expert._id"
+                    >
+                      <b>Especialista:</b>  {{expert.name}}                      
+                      <br />
+                      {{expert.description}}
+                    </b-alert>
                   </b-card-text>
                   <b-card-text>
                     <b>Mensagens dos Sponsors:</b>
                     <b-alert
                       show
-                      variant="secondary"
+                      variant="primary"
                       v-for="message in this.sponsors"
                       :key="message._id"
                     >
@@ -133,6 +139,7 @@ export default {
   data: function() {
     return {
       sponsors: [],
+      experts: [],
       animal: "",
       comment: ""
     };
@@ -146,10 +153,11 @@ export default {
     ...mapGetters(["getUserLevelByPoints"])
   },
   methods: {
-    fetchExperts() {
+    fetchExperts(groupFilter) {
       this.$store.dispatch(`expert/${FETCH_EXPERTS}`).then(
-        () => {
-          this.experts = this.getExperts;
+        () => {      
+          this.experts = this.getExperts.filter(
+            expert => expert.group == groupFilter)
         },
         err => {
           this.$alert(`${err.message}`, "Erro", "error");
@@ -239,11 +247,10 @@ export default {
       return `${formatDate} ${formatTime}`;
     }
   },
-  created() {
-    /* eslint-disable no-console */
+  created() {    
     this.animal = this.getAnimalsById(this.$route.params.animalId);
     this.fetchSponsors(this.animal.name);
-    /* eslint-enable no-console */
+    this.fetchExperts(this.animal.group);
   }
 };
 </script>

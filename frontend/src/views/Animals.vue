@@ -52,6 +52,8 @@
 import Animal from "@/components/Animal.vue";
 import HeaderPage from "@/components/HeaderPage.vue";
 import { FETCH_ANIMALS } from "@/store/animals/animal.constants";
+import { FETCH_SPONSORS } from "@/store/sponsors/sponsor.constants";
+import { FETCH_EXPERTS } from "@/store/experts/expert.constants";
 
 import { mapGetters } from "vuex";
 
@@ -68,13 +70,17 @@ export default {
       filterLevel: "todos",
       reverse: false,
       animals: [],
-      userLevel:0
+      userLevel:0,
+      sponsors: [],
+      experts: []
     };
   },
   computed: {
     ...mapGetters(["getUserLevelByPoints"]),
     ...mapGetters('auth', ["getProfile"]),
     ...mapGetters("animal", ["getAnimals","getMessage"]),
+    ...mapGetters("sponsor", ["getSponsors"]),
+    ...mapGetters("expert", ["getExperts"]),
     classSorter() {
       return {
         "fas fa-sort-alpha-up": !this.reverse,
@@ -103,6 +109,26 @@ export default {
     }
   },
   methods: {
+    fetchExperts() {
+      this.$store.dispatch(`expert/${FETCH_EXPERTS}`).then(
+        () => {
+          this.experts = this.getExperts;          
+        },
+        err => {
+          this.$alert(`${err.message}`, "Erro", "error");
+        }
+      );
+    },
+    fetchSponsors() {
+      this.$store.dispatch(`sponsor/${FETCH_SPONSORS}`).then(
+        () => { 
+          this.sponsors = this.getSponsors;
+        },
+        err => {
+          this.$alert(`${err.message}`, "Erro", "error");
+        }
+      );
+    },
     compareAnimalNames(animal1, animal2) {
       if (!this.reverse) {
         if (animal1.name > animal2.name) return 1;
@@ -119,6 +145,8 @@ export default {
     }
   },
   created() {
+    this.fetchSponsors();
+    this.fetchExperts();
     this.$store
       .dispatch(`animal/${FETCH_ANIMALS}`)
       .then(
@@ -126,6 +154,14 @@ export default {
           this.animals = this.getAnimals.filter(
             animal => animal.level <= this.getUserLevelByPoints(this.getProfile.gamification.points).level
           )
+
+          //add sponsors and experts to animals
+          Object.values(this.animals).forEach(animal => {
+            animal.sponsors = this.sponsors.filter(
+            sponsor => sponsor.animal == animal.name);
+            animal.experts = this.experts.filter(
+            expert => expert.group == animal.group);
+          });
         },
         err => this.$alert(`${err.message}`, "Erro", "error")
       );

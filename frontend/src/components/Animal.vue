@@ -20,7 +20,7 @@
         <i class="fas fa-comment fa-lg ml-2"></i>
         {{animal.comments.length}}
         <i class="fas fa-users fa-lg ml-2"></i>
-        15
+        {{animal.sponsors.length}}
       </b-card-text>
 
       <router-link
@@ -35,9 +35,18 @@
       <b-button variant="info" :href="'https://www.facebook.com/sharer/sharer.php?u=' + animal.links[0].url" target="_blank">
         <i class="fab fa-facebook"></i> Partilhar
       </b-button>
-
-      <b-card-text>Especialista: Pedro</b-card-text>
-
+      <br><br>
+      <b-card-text v-if="animal.experts.length > 0">
+      <b>Especialistas:</b>   
+      </b-card-text>   
+      <ul>
+        <b-card-text
+        v-for="expert in animal.experts"
+        :key="expert._id">
+        <li>{{expert.name}}</li>
+      </b-card-text>
+      </ul>      
+      
     </b-card>
   </b-col>
 </template>
@@ -55,7 +64,7 @@ export default {
     };
   },
   methods: {
-    ...mapGetters("auth", ["getProfile"]),
+    ...mapGetters("auth", ["getProfile"]),    
     evaluate() {
       if (!this.animal.evaluation.includes(this.getProfile()._id)) {
         this.animal.evaluation.push(this.getProfile()._id);
