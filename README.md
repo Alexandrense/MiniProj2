@@ -11,16 +11,19 @@ Alexandre Carvalho
 # Setup
 
 - Frontend:
+
 On /frontend run
 
 npm install
 
 - Backend:
+
 On backend/fca_webbook2-master run:
 
 npm install
 
 - Database:
+
 Import /database/test to a test collection in you MongoDB
 
 # Running
