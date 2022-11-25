@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "4203f6f3-787e-465d-935b-48d06a533c14",
+		"name": "Animalec",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/animals",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6InA0dXVycGc0NnI2MzZmYzYxNjkwZjVkZDAwMDRjN2RiNTciLCJpYXQiOjE2NjkyNzU4MTIsImV4cCI6MTY2OTI5MDgxMiwiaXNzIjoiRkNBIn0.Cf3plIoXNUtjawq_oKipcL-_9l0OB_7rKUOoFpBxnfQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/animals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"animals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/sponsors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6InA0dXVycGc0NnI2MzZmYzYxNjkwZjVkZDAwMDRjN2RiNTciLCJpYXQiOjE2NjkyOTg5NzMsImV4cCI6MTY2OTMxMzk3MywiaXNzIjoiRkNBIn0.3tquzn0QBWi1dwkp4hBXmyBXQNmcMemmGbPjlzMsaM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/sponsors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sponsors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6InA0dXVycGc0NnI2MzZmYzYxNjkwZjVkZDAwMDRjN2RiNTciLCJpYXQiOjE2NjkyNzU4MTIsImV4cCI6MTY2OTI5MDgxMiwiaXNzIjoiRkNBIn0.Cf3plIoXNUtjawq_oKipcL-_9l0OB_7rKUOoFpBxnfQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/experts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6InA0dXVycGc0NnI2MzZmYzYxNjkwZjVkZDAwMDRjN2RiNTciLCJpYXQiOjE2NjkyOTg5NzMsImV4cCI6MTY2OTMxMzk3MywiaXNzIjoiRkNBIn0.3tquzn0QBWi1dwkp4hBXmyBXQNmcMemmGbPjlzMsaM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/experts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"experts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwayI6InA0dXVycGc0NnI2MzZmYzYxNjkwZjVkZDAwMDRjN2RiNTciLCJpYXQiOjE2NjkyMjk3ODAsImV4cCI6MTY2OTI0NDc4MCwiaXNzIjoiRkNBIn0.6YINu1QjAnz9WmpscHOWNV_T_Uj_feWrVJie_KRYSes"
+		}
+	]
+}
