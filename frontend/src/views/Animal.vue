@@ -33,7 +33,7 @@
                     3
                     <!-- Sponsors -->
                     <i class="fas fa-users fa-lg ml-2"></i>
-                    15
+                    {{sponsors.length}}
                   </b-card-text>
                   <b-card-text>
                     <b>Descrição:</b>
@@ -52,10 +52,12 @@
                     <b-alert
                       show
                       variant="secondary"
-                      v-for="comment in this.animal.comments"
-                      :key="comment._id"
+                      v-for="message in this.sponsors"
+                      :key="message._id"
                     >
-                      ...
+                      <b>{{message.name}}</b>
+                      <br />
+                      {{message.message}}
                     </b-alert>
                   </b-card-text>
                   <b-card-text>
@@ -120,6 +122,8 @@
 <script>
 import HeaderPage from "@/components/HeaderPage.vue";
 import { EDIT_ANIMAL } from "@/store/animals/animal.constants";
+import { FETCH_SPONSORS } from "@/store/sponsors/sponsor.constants";
+import { FETCH_EXPERTS } from "@/store/experts/expert.constants";
 import { mapGetters } from "vuex";
 export default {
   name: "Animal",
@@ -128,17 +132,41 @@ export default {
   },
   data: function() {
     return {
+      sponsors: [],
       animal: "",
       comment: ""
     };
   },
   computed: {
     ...mapGetters("animal", ["getAnimalsById", "getMessage"]),
+    ...mapGetters("sponsor", ["getSponsors"]),
+    ...mapGetters("expert", ["getExperts"]),
     ...mapGetters("auth", ["getProfile"]),
     ...mapGetters("user", ["getUsersById","getNameById"]),
     ...mapGetters(["getUserLevelByPoints"])
   },
   methods: {
+    fetchExperts() {
+      this.$store.dispatch(`expert/${FETCH_EXPERTS}`).then(
+        () => {
+          this.experts = this.getExperts;
+        },
+        err => {
+          this.$alert(`${err.message}`, "Erro", "error");
+        }
+      );
+    },
+    fetchSponsors(animalFilter) {
+      this.$store.dispatch(`sponsor/${FETCH_SPONSORS}`).then(
+        () => { 
+          this.sponsors = this.getSponsors.filter(
+            sponsor => sponsor.animal == animalFilter)
+        },
+        err => {
+          this.$alert(`${err.message}`, "Erro", "error");
+        }
+      );
+    },
     showVideo(videoUrl) {
       this.$fire({
         title: "<strong>Vídeo</strong>",
@@ -212,7 +240,10 @@ export default {
     }
   },
   created() {
+    /* eslint-disable no-console */
     this.animal = this.getAnimalsById(this.$route.params.animalId);
+    this.fetchSponsors(this.animal.name);
+    /* eslint-enable no-console */
   }
 };
 </script>

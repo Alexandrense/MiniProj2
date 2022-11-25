@@ -18,6 +18,7 @@ const state = {
 const getters = {
   getSponsors: state => state.sponsors,
   getSponsorsById: state => id => state.sponsors.find(sponsor => sponsor._id === id),
+  getSponsorsByAnimal: state => animal => state.sponsors.find(sponsor => sponsor.animal === animal),
   getMessage: state => state.message,
   
 };
